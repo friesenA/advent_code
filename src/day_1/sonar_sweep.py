@@ -3,9 +3,11 @@ import DATA_POINTS from data
 
 
 if __name__ == '__main__':
-  count = 0
+  with open('data.txt') as f:
+    data_points = f.readlines()
 
-  for i, value in enumerate(DATA_POINTS):
+  count = 0
+  for i, value in enumerate(data_points):
     if i = 0:
       continue
     if value > dat_points[i-1]:
