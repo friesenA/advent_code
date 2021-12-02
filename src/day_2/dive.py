@@ -4,19 +4,21 @@ class Position:
 
   def __init__(self):
     self.depth = 0
-    self.lateral = 0
+    self.horizontal = 0
+    self.aim = 0
     
   def move(self, command):
     getattr(self, command.action)(command.qty)
     
   def forward(self, qty):
-    self.lateral += qty
+    self.horizontal += qty
+    self.depth += self.aim * qty
     
   def down(self, qty):
-    self.depth += qty
+    self.aim += qty
     
   def up(self, qty):
-    self.depth -= qty
+    self.aim -= qty
 
 
 class Command:
@@ -37,7 +39,7 @@ if __name__ == '__main__':
   for command in commands:
     position.move(command)
     
-  print(position.depth * position.lateral)
+  print(position.depth * position.horizontal)
       
     
   
