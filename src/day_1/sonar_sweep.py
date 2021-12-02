@@ -33,5 +33,5 @@ if __name__ == '__main__':
   with open('data.txt') as f:
     data_points = [int(e.replace('\n', '')) for e in f.readlines()]
 
-  print(f'part 1: %s', part1(data_points))
-  print(f'part 2: %s', part2(data_points))
+  print(f'part 1: {part1(data_points)}')
+  print(f'part 2: {part2(data_points)}')
