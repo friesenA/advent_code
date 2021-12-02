@@ -1,6 +1,4 @@
 """Sonar Sweep"
-import DATA_POINTS from data
-
 
 if __name__ == '__main__':
   with open('data.txt') as f:
@@ -14,4 +12,3 @@ if __name__ == '__main__':
       count += 1
   
   print(count)
-  
