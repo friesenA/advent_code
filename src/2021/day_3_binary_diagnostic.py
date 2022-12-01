@@ -50,7 +50,7 @@ def life_support(data):
 
 
 if __name__ == '__main__':
-  with open('data.txt') as f:
+  with open('day3_data.txt') as f:
     data = [line.replace('\n', '') for line in f.readlines()]
   
   print(power_consumption(data))

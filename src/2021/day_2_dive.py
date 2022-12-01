@@ -30,7 +30,7 @@ class Command:
 
 if __name__ == '__main__':
   commands = []
-  with open('data.txt') as f:
+  with open('day2_data.txt') as f:
     for line in f.readlines():
       action, qty = line.replace('\n', '').split(' ')
       commands.append(Command(action, int(qty)))

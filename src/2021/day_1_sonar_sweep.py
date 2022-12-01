@@ -30,7 +30,7 @@ def window(data_points, range):
   
 
 if __name__ == '__main__':
-  with open('data.txt') as f:
+  with open('day1_data.txt') as f:
     data_points = [int(e.replace('\n', '')) for e in f.readlines()]
 
   print(f'part 1: {part1(data_points)}')
