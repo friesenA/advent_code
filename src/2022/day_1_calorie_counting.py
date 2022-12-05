@@ -1,6 +1,3 @@
-
-
-
 def part1(elves_calories):
   
   result = max(elves_calories)
@@ -17,8 +14,6 @@ def part2(elves_calories):
   
   print(f'top three calories: {sum(top3)}')
     
-
-
 
 if __name__ == "__main__":
   with open("src/2022/day1_data.txt") as f:
