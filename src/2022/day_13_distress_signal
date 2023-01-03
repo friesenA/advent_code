@@ -1,0 +1,75 @@
+def printPackets(packets):
+  for x in packets:
+    print(x)
+
+def compareList(left, right):
+  if right and not left:
+    return True
+  if left and not right:
+    return False
+  if not left and not right:
+    return None
+
+  first_comparison = compare(left[0], right[0])
+  if first_comparison is None:
+    return compareList(left[1:], right[1:])
+  else:
+    return first_comparison
+
+def compareValue(left, right):
+  if left < right:
+    return True
+  elif left > right:
+    return False
+  else:
+    return None
+
+def compare(left, right):
+  if isinstance(left, list) or isinstance(right, list):
+    l = left if isinstance(left, list) else [left]
+    r = right if isinstance(right, list) else [right]
+    return compareList(l, r)
+  else:
+    return compareValue(left, right)
+
+def quicksort(array, low, high):
+  if low < high:
+    part = partition(array, low, high)
+    quicksort(array, low, part - 1)
+    quicksort(array, part + 1, high)
+
+def partition(array, low, high):
+  part = array[high]
+  i = low - 1
+
+  for j in range(low, high):
+    if compare(array[j], part):
+      i += 1
+      temp = array[i]
+      array[i] = array[j]
+      array[j] = temp
+    
+  temp = array[i+1]
+  array[i + 1] = array[high]
+  array[high] = temp
+
+  return i+1
+
+def sort(packets):
+  quicksort(packets, 0, len(packets) - 1)
+
+if __name__ == '__main__':
+  with open('src/2022/day13_data.txt') as f:
+    dataset = [line.rstrip() for line in f.readlines()]
+  
+  data = [[eval(dataset[x]), eval(dataset[x+1])] for x in range(0, len(dataset), 3)]
+  packet_analysis = [x + 1 for x, input in enumerate(data) if compare(input[0], input[1])]
+  print(f"Part 1: {sum(packet_analysis)}")
+
+  packets = [eval(row) for row in dataset if row != '']
+  packets.append([[2]])
+  packets.append([[6]])
+  sort(packets)
+  # printPackets(packets)
+  print(f"Part 2: {(packets.index([[2]]) + 1) * (packets.index([[6]]) + 1)}")
+
